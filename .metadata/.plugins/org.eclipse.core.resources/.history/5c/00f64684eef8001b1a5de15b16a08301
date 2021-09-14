@@ -1,0 +1,18 @@
+package com.example.demoweather;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class WeatherDTO {
+	
+	private Location location;
+	public String getCurrent() {
+		return current;
+	}
+	public void setCurrent(String current) {
+		this.current = current;
+	}
+	private String current;
+	
+
+}

@@ -1,0 +1,24 @@
+package com.example.demoweather;
+
+public class Day {
+	
+	public String maxtemp_c;
+	public String maxtemp_f;
+	public String mintemp_c;
+	public String mintemp_f;
+	public String avgtemp_c;
+	public String avgtemp_f;
+	public String maxwind_mph;
+	maxwind_kph
+	totalprecip_mm
+	totalprecip_in
+	avgvis_km
+	avgvis_miles
+	avghumidity
+	daily_will_it_rain
+	daily_chance_of_rain
+	daily_will_it_snow
+	daily_chance_of_snow
+	
+
+}

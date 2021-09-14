@@ -1,0 +1,13 @@
+package com.example.demoweather;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public class ForecastDay {
+	public String Date;
+	public String date_epoch;
+	public Day day;
+	//public Condition condition;
+	public String uv;
+}

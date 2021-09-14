@@ -1,0 +1,11 @@
+package com.example.demoweather;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class WeatherDTO {
+	
+	private Location location;
+	
+
+}

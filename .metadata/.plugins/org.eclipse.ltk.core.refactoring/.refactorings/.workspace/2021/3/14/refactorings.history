@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 0 source folders to &apos;StrutsEmployeeApp&apos;&#x0A;- Destination element: &apos;StrutsEmployeeApp&apos;" description="Copy source folders" flags="6" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyRoots" roots="0" stamp="1617051512281" target="/StrutsEmployeeApp" version="1.0"/>
+</session>

@@ -1,0 +1,30 @@
+package com.example.demoweather;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonNaming(LowerCaseWithUnderscoresStrategy.class)
+public class Day {
+	
+	public String maxtempC;
+	public String maxtempF;
+	public String mintempC;
+	public String mintempF;
+	public String avgtempC;
+	public String avgtempF;
+	public String maxwindMph;
+	public String maxwindKph;
+	public String totalprecipMm;
+	public String totalprecipIn;
+	public String avgvisKm;
+	public String avgvisMiles;
+	public String avghumidity;
+	public String dailyWillItRain;
+	public String dailyChanceOfRain;
+	public String dailyWillItSnow;
+	public String dailyChanceOfSnow;
+	
+
+}

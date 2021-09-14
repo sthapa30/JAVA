@@ -1,0 +1,8 @@
+package com.example.demoweather;
+
+public class ForecastDay {
+	public String Date;
+	public String date_epoch;
+	public Day day;
+	public Condition condition;
+}

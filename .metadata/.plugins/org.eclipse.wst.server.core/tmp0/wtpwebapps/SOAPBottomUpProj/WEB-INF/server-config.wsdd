@@ -1,0 +1,103 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="/home/sailesh/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SOAPBottomUpProj/WEB-INF/attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="EmployeeInfoService" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="addEmployee" qname="ns1:addEmployee" returnQName="ns1:addEmployeeReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://services.sym.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:empId" type="xsd:string"/>
+   <ns2:parameter qname="ns1:firstName" type="xsd:string"/>
+   <ns2:parameter qname="ns1:lastName" type="xsd:string"/>
+   <ns2:parameter qname="ns1:email" type="xsd:string"/>
+   <ns2:parameter qname="ns1:hireDate" type="xsd:string"/>
+   <ns2:parameter qname="ns1:jobID" type="xsd:string"/>
+  </ns2:operation>
+  <ns1:operation name="getEmployeeInfo" qname="ns2:getEmployeeInfo" returnQName="ns2:getEmployeeInfoReturn" returnType="ns3:EmployeeDTO" soapAction="" xmlns:ns2="http://services.sym.com" xmlns:ns3="http://dto.sym.com">
+   <ns1:parameter qname="ns2:empId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="updateEmployeeInfo" qname="ns4:updateEmployeeInfo" returnQName="ns4:updateEmployeeInfoReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://services.sym.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:empId" type="xsd:string"/>
+   <ns1:parameter qname="ns4:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns4:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns4:email" type="xsd:string"/>
+   <ns1:parameter qname="ns4:hireDate" type="xsd:string"/>
+   <ns1:parameter qname="ns4:jobID" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:operation name="deleteEmployee" qname="ns5:deleteEmployee" returnQName="ns5:deleteEmployeeReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://services.sym.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:empId" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getEmployeeInfo updateEmployeeInfo deleteEmployee addEmployee"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="EmployeeInfoService"/>
+  <ns1:parameter name="className" value="com.sym.services.EmployeeInfoService"/>
+  <ns1:parameter name="wsdlServicePort" value="EmployeeInfoService"/>
+  <ns1:parameter name="schemaQualified" value="http://dto.sym.com,http://services.sym.com"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.sym.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="EmployeeInfoServiceService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns6:EmployeeDTO" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.sym.dto.EmployeeDTO" xmlns:ns6="http://dto.sym.com"/>
+ </ns1:service>
+ <ns1:service name="AddEmployeeService" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="addEmployee" qname="ns7:addEmployee" returnQName="ns7:addEmployeeReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://services.sym.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:empId" type="xsd:string"/>
+   <ns1:parameter qname="ns7:firstName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:lastName" type="xsd:string"/>
+   <ns1:parameter qname="ns7:email" type="xsd:string"/>
+   <ns1:parameter qname="ns7:hireDate" type="xsd:string"/>
+   <ns1:parameter qname="ns7:jobID" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="addEmployee"/>
+  <ns1:parameter name="wsdlPortType" value="AddEmployeeService"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://services.sym.com"/>
+  <ns1:parameter name="wsdlServicePort" value="AddEmployeeService"/>
+  <ns1:parameter name="className" value="com.sym.services.AddEmployeeService"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.sym.com"/>
+  <ns1:parameter name="wsdlServiceElement" value="AddEmployeeServiceService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

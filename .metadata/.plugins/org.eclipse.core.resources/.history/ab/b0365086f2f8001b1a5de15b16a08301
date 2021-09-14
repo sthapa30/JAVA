@@ -1,0 +1,11 @@
+package com.example.demoweather;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Forecast {
+	public Array<ForecastDay> forecastDay;
+}

@@ -1,0 +1,19 @@
+package com.example.demoweather;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class WeatherDTO {
+	
+	public Location location;
+	public Forecast forecast;
+
+	@Override
+	public String toString() {
+		return "WeatherDTO [location=" + location + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	
+
+}

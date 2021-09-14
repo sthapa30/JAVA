@@ -1,0 +1,22 @@
+package com.example.demoweather;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
+@org.springframework.stereotype.Service
+public class Service {
+	
+	@Autowired
+	RestTemplate restTemplate;
+	public String getWeather(String zipCode) {
+		String URL = "http://api.weatherapi.com/v1/forecast.json?key=53a3ab4425134075bfb50818210908&q="+zipCode;
+		ResponseEntity<WeatherDTO> response = restTemplate.getForEntity(URL, WeatherDTO.class);
+		 WeatherDTO weatherDto = response.getBody();
+		 Forecast forcast = weatherDto.forecast;
+		 System.out.println(forcast.forecastDay[0]);
+		
+		return "from service "+ zipCode;
+	}
+
+}

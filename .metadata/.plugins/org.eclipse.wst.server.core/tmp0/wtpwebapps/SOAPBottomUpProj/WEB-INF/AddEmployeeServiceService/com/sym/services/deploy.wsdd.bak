@@ -1,0 +1,34 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AddEmployeeServiceService WSDL service -->
+
+  <service name="AddEmployeeService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.sym.com"/>
+      <parameter name="wsdlServiceElement" value="AddEmployeeServiceService"/>
+      <parameter name="schemaQualified" value="http://services.sym.com"/>
+      <parameter name="wsdlServicePort" value="AddEmployeeService"/>
+      <parameter name="className" value="com.sym.services.AddEmployeeServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="AddEmployeeService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="addEmployee" qname="operNS:addEmployee" xmlns:operNS="http://services.sym.com" returnQName="retNS:addEmployeeReturn" xmlns:retNS="http://services.sym.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:empId" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:firstName" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastName" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:email" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:hireDate" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:jobID" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="addEmployee"/>
+
+  </service>
+</deployment>

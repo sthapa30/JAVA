@@ -1,0 +1,19 @@
+package com.example.demoweather;
+
+public class WeatherDTO {
+	
+	private Location location;
+	public String getLocation() {
+		return location;
+	}
+	
+	public String getCurrent() {
+		return current;
+	}
+	public void setCurrent(String current) {
+		this.current = current;
+	}
+	private String current;
+	
+
+}

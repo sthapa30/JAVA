@@ -1,0 +1,56 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EmployeeInfoServiceService WSDL service -->
+
+  <service name="EmployeeInfoService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://services.sym.com"/>
+      <parameter name="wsdlServiceElement" value="EmployeeInfoServiceService"/>
+      <parameter name="schemaQualified" value="http://dto.sym.com,http://services.sym.com"/>
+      <parameter name="wsdlServicePort" value="EmployeeInfoService"/>
+      <parameter name="className" value="com.sym.services.EmployeeInfoServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="EmployeeInfoService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="addEmployee" qname="operNS:addEmployee" xmlns:operNS="http://services.sym.com" returnQName="retNS:addEmployeeReturn" xmlns:retNS="http://services.sym.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:empId" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:firstName" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastName" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:email" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:hireDate" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:jobID" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getEmployeeInfo" qname="operNS:getEmployeeInfo" xmlns:operNS="http://services.sym.com" returnQName="retNS:getEmployeeInfoReturn" xmlns:retNS="http://services.sym.com" returnType="rtns:EmployeeDTO" xmlns:rtns="http://dto.sym.com" soapAction="" >
+        <parameter qname="pns:empId" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="updateEmployeeInfo" qname="operNS:updateEmployeeInfo" xmlns:operNS="http://services.sym.com" returnQName="retNS:updateEmployeeInfoReturn" xmlns:retNS="http://services.sym.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:empId" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:firstName" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:lastName" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:email" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:hireDate" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:jobID" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteEmployee" qname="operNS:deleteEmployee" xmlns:operNS="http://services.sym.com" returnQName="retNS:deleteEmployeeReturn" xmlns:retNS="http://services.sym.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:empId" xmlns:pns="http://services.sym.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getEmployeeInfo updateEmployeeInfo deleteEmployee addEmployee"/>
+
+      <typeMapping
+        xmlns:ns="http://dto.sym.com"
+        qname="ns:EmployeeDTO"
+        type="java:com.sym.dto.EmployeeDTO"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

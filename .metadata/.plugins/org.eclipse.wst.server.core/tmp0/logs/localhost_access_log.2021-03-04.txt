@@ -1,0 +1,10 @@
+127.0.0.1 - - [04/Mar/2021:12:08:42 -0600] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [04/Mar/2021:12:08:57 -0600] "POST /SOAPBottomUpProj/services/EmployeeInfoService HTTP/1.1" 500 532
+127.0.0.1 - - [04/Mar/2021:12:09:22 -0600] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [04/Mar/2021:12:11:34 -0600] "POST /SOAPBottomUpProj/services/EmployeeInfoService HTTP/1.1" 500 532
+127.0.0.1 - - [04/Mar/2021:12:12:29 -0600] "GET / HTTP/1.1" 404 751
+127.0.0.1 - - [04/Mar/2021:12:13:56 -0600] "GET / HTTP/1.1" 404 751
+127.0.0.1 - - [04/Mar/2021:12:25:49 -0600] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [04/Mar/2021:12:25:52 -0600] "POST /SOAPBottomUpProj/services/EmployeeInfoService HTTP/1.1" 500 532
+127.0.0.1 - - [04/Mar/2021:13:39:37 -0600] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [04/Mar/2021:13:39:41 -0600] "POST /SOAPBottomUpProj/services/EmployeeInfoService HTTP/1.1" 500 532
